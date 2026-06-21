@@ -3,40 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat App Clone</title>
+    <title>WhatsApp Web</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="app">
-        <div class="sidebar">
-            <div class="sidebar-header">Chats</div>
-            <div class="search">
-                <input type="text" placeholder="Search chats">
+    <div class="container">
+        <div class="login-box">
+            <!-- WhatsApp Logo -->
+            <div class="logo">
+                <svg width="50" height="50" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" fill="#25D366"/>
+                    <path d="M17 8.5L9 13.5L7 11.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>WhatsApp</span>
             </div>
-            <div class="chat-list">
-                <div class="chat-item">
-                    <div class="chat-name">Alice</div>
-                    <div class="chat-preview">See you tomorrow!</div>
-                </div>
-                <div class="chat-item">
-                    <div class="chat-name">Bob</div>
-                    <div class="chat-preview">Thanks!</div>
-                </div>
-            </div>
-        </div>
 
-        <div class="main">
-            <div class="main-header">Alice</div>
-            <div class="messages" id="messages">
-                <div class="message received">Hi! How are you?</div>
-                <div class="message sent">I'm good. Working on a chat app.</div>
+            <h2>Stay connected</h2>
+            <p class="subtitle">Use WhatsApp on your computer</p>
+
+            <!-- Phone Number Input -->
+            <div class="input-group">
+                <div class="country-code">
+                    <select id="countryCode">
+                        <option value="+1">🇺🇸 +1</option>
+                        <option value="+44">🇬🇧 +44</option>
+                        <option value="+91" selected>🇮🇳 +91</option>
+                        <option value="+61">🇦🇺 +61</option>
+                        <option value="+81">🇯🇵 +81</option>
+                        <option value="+86">🇨🇳 +86</option>
+                        <option value="+55">🇧🇷 +55</option>
+                        <option value="+27">🇿🇦 +27</option>
+                    </select>
+                </div>
+                <input type="tel" id="phoneNumber" placeholder="Phone number" required>
             </div>
-            <div class="input-area">
-                <input type="text" id="messageInput" placeholder="Type a message...">
-                <button onclick="sendMessage()">Send</button>
+
+            <button id="loginBtn" onclick="handleLogin()">Next</button>
+
+            <div class="divider">
+                <span>or</span>
+            </div>
+
+            <!-- QR Code Section -->
+            <div class="qr-section">
+                <p>Scan QR code</p>
+                <div class="qr-box">
+                    <div class="qr-placeholder">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none">
+                            <rect x="3" y="3" width="18" height="18" rx="2" stroke="#25D366" stroke-width="2"/>
+                            <rect x="6" y="6" width="4" height="4" fill="#25D366"/>
+                            <rect x="14" y="6" width="4" height="4" fill="#25D366"/>
+                            <rect x="6" y="14" width="4" height="4" fill="#25D366"/>
+                            <rect x="14" y="14" width="4" height="4" fill="#25D366"/>
+                            <rect x="10" y="10" width="4" height="4" fill="#25D366"/>
+                        </svg>
+                    </div>
+                </div>
+                <p class="qr-hint">Scan with your WhatsApp mobile app</p>
+            </div>
+
+            <div class="footer">
+                <p>WhatsApp is a Meta product</p>
+                <div class="footer-links">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Help</a>
+                </div>
             </div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
