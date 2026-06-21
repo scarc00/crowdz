@@ -1,23 +1,36 @@
-function sendMessage(){
- const input=document.getElementById('messageInput');
- const text=input.value.trim();
- if(!text) return;
- const messages=document.getElementById('messages');
- const msg=document.createElement('div');
- msg.className='message sent';
- msg.textContent=text;
- messages.appendChild(msg);
- input.value='';
- messages.scrollTop=messages.scrollHeight;
+function sendMessage() {
+    const input = document.getElementById('messageInput');
+    const message = input.value.trim();
+    
+    if (message === '') return;
 
- setTimeout(()=>{
-   const reply=document.createElement('div');
-   reply.className='message received';
-   reply.textContent='Auto reply: '+text;
-   messages.appendChild(reply);
-   messages.scrollTop=messages.scrollHeight;
- },1000);
+    const messagesContainer = document.getElementById('messages');
+    
+    // Create sent message
+    const sentMessage = document.createElement('div');
+    sentMessage.className = 'message sent';
+    sentMessage.textContent = message;
+    messagesContainer.appendChild(sentMessage);
+    
+    // Clear input
+    input.value = '';
+    
+    // Scroll to bottom
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    
+    // Auto-reply after 1 second
+    setTimeout(() => {
+        const reply = document.createElement('div');
+        reply.className = 'message received';
+        reply.textContent = 'Thanks for your message! 😊';
+        messagesContainer.appendChild(reply);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }, 1000);
 }
-document.getElementById('messageInput').addEventListener('keypress',e=>{
- if(e.key==='Enter') sendMessage();
+
+// Allow Enter key to send
+document.getElementById('messageInput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        sendMessage();
+    }
 });
