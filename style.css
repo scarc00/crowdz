@@ -218,3 +218,11 @@ button:active {
         width: 100%;
     }
 }
+/* Add this new rule for input group spacing */
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;  /* Increased from 20px to 16px for tighter spacing */
+}
+
+/* Keep everything else the same */
