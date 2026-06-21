@@ -1,36 +1,30 @@
-function sendMessage() {
-    const input = document.getElementById('messageInput');
-    const message = input.value.trim();
+function handleLogin() {
+    // Get the phone number input
+    const phoneInput = document.getElementById('phoneNumber');
+    const phoneNumber = phoneInput.value.trim();
     
-    if (message === '') return;
-
-    const messagesContainer = document.getElementById('messages');
+    // Get the country code
+    const countryCode = document.getElementById('countryCode').value;
     
-    // Create sent message
-    const sentMessage = document.createElement('div');
-    sentMessage.className = 'message sent';
-    sentMessage.textContent = message;
-    messagesContainer.appendChild(sentMessage);
-    
-    // Clear input
-    input.value = '';
-    
-    // Scroll to bottom
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    
-    // Auto-reply after 1 second
-    setTimeout(() => {
-        const reply = document.createElement('div');
-        reply.className = 'message received';
-        reply.textContent = 'Thanks for your message! 😊';
-        messagesContainer.appendChild(reply);
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    }, 1000);
-}
-
-// Allow Enter key to send
-document.getElementById('messageInput').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-        sendMessage();
+    // Check if phone number is entered
+    if (phoneNumber === '') {
+        // Show error
+        phoneInput.style.borderColor = '#ff3b30';
+        phoneInput.placeholder = 'Please enter your phone number';
+        setTimeout(() => {
+            phoneInput.style.borderColor = '#2a3942';
+            phoneInput.placeholder = 'Phone number';
+        }, 2000);
+        return;
     }
-});
+    
+    // If phone number is entered, show success
+    const fullNumber = countryCode + ' ' + phoneNumber;
+    alert('✓ Login successful!\n\nPhone number: ' + fullNumber + '\n\n(Redirecting to WhatsApp...)');
+    
+    // Optional: Log the number to console
+    console.log('Phone number entered:', fullNumber);
+    
+    // Simulate redirect (remove this if you want)
+    // window.location.href = 'https://web.whatsapp.com';
+}
